@@ -89,7 +89,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="absolute top-[100px] left-0 w-full bg-white shadow-md md:hidden">
+          <div className="absolute top-[100px] z-[999] left-0 w-full bg-white shadow-md md:hidden">
             <div className="flex flex-col items-center space-y-4 py-4">
               <Link href="/shop" className="text-gray-600 hover:text-blue-600" onClick={() => setIsOpen(false)}>
                 Shop
