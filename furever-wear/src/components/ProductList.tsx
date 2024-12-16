@@ -67,74 +67,76 @@ const ProductList = () => {
 
 // Product Card Component
 const ProductCard = ({ product, addToBasket }: { product: Product; addToBasket: (item: BasketItem) => void }) => {
-  const [selectedColor, setSelectedColor] = useState(
-    product.colors && product.colors.length > 0 ? product.colors[0] : null
-  );
-
-  return (
-    <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow border border-gray-200">
-      {/* Product Image */}
-      <Link href={`/product/${product.slug}`}>
-        <div className="h-[550px] bg-gray-200 cursor-pointer relative">
-          <Image
-            src={selectedColor ? selectedColor.image : "/assets/default-product.jpg"}
-            alt={product.name}
-            fill
-            className="object-cover rounded-lg"
-            priority
-          />
-        </div>
-      </Link>
-
-      {/* Product Details */}
-      <div className="flex flex-col flex-grow p-4">
+    const [selectedColor, setSelectedColor] = useState(
+      product.colors && product.colors.length > 0 ? product.colors[0] : null
+    );
+  
+    return (
+      <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow border border-gray-200">
+        {/* Product Image */}
         <Link href={`/product/${product.slug}`}>
-          <h3 className="text-lg font-semibold text-gray-800 hover:underline cursor-pointer">
-            {product.name}
-          </h3>
-        </Link>
-        <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-
-        {/* Color Options */}
-        {product.colors && product.colors.length > 0 ? (
-          <div className="flex items-center gap-2 mb-4">
-            {product.colors.map((color) => (
-              <button
-                key={color.value}
-                onClick={() => setSelectedColor(color)}
-                className={`w-6 h-6 rounded-full border-2 transition ${
-                  selectedColor && selectedColor.value === color.value
-                    ? "border-blue-500"
-                    : "border-gray-300"
-                }`}
-                style={{ backgroundColor: `#${color.value}` }}
-              />
-            ))}
+  <div className="relative w-full bg-gray-200 cursor-pointer">
+    <Image
+      src={selectedColor ? selectedColor.image : "/assets/default-product.jpg"}
+      alt={product.name}
+      layout="responsive"
+      width={4} // Aspect ratio width
+      height={3} // Aspect ratio height
+      className="object-contain rounded-t-lg"
+      priority
+    />
+  </div>
+</Link>
+  
+        {/* Product Details */}
+        <div className="flex flex-col flex-grow p-4">
+          <Link href={`/product/${product.slug}`}>
+            <h3 className="text-lg font-semibold text-gray-800 hover:underline cursor-pointer">
+              {product.name}
+            </h3>
+          </Link>
+          <p className="text-gray-600 text-sm mb-2">{product.description}</p>
+  
+          {/* Color Options */}
+          {product.colors && product.colors.length > 0 ? (
+            <div className="flex items-center gap-2 mb-4">
+              {product.colors.map((color) => (
+                <button
+                  key={color.value}
+                  onClick={() => setSelectedColor(color)}
+                  className={`w-6 h-6 rounded-full border-2 transition ${
+                    selectedColor && selectedColor.value === color.value
+                      ? "border-blue-500"
+                      : "border-gray-300"
+                  }`}
+                  style={{ backgroundColor: `#${color.value}` }}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">No colors available</p>
+          )}
+  
+          <div className="mt-auto flex items-center justify-between">
+            <span className="text-blue-600 text-lg font-bold">${product.price.toFixed(2)}</span>
+            <button
+              className="bg-blue-500 text-white text-sm px-4 py-2 rounded hover:bg-blue-600 transition"
+              onClick={() =>
+                addToBasket({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  quantity: 1,
+                  color: selectedColor ? selectedColor.name : "Default", // Ensure color is passed
+                })
+              }
+            >
+              Add to Cart
+            </button>
           </div>
-        ) : (
-          <p className="text-sm text-gray-500">No colors available</p>
-        )}
-
-        <div className="mt-auto flex items-center justify-between">
-          <span className="text-blue-600 text-lg font-bold">${product.price.toFixed(2)}</span>
-          <button
-            className="bg-blue-500 text-white text-sm px-4 py-2 rounded hover:bg-blue-600 transition"
-            onClick={() =>
-              addToBasket({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                quantity: 1,
-                color: selectedColor ? selectedColor.name : "Default", // Ensure color is passed
-              })
-            }
-          >
-            Add to Cart
-          </button>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default ProductList;
+    );
+  };
+  
+  export default ProductList;

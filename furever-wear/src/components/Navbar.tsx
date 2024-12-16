@@ -12,6 +12,7 @@ const Navbar = () => {
   const totalItems = basket.reduce((sum: number, item: { quantity: number }) => {
     return sum + item.quantity;
   }, 0);
+
   return (
     <header className="bg-white shadow-md font-titillium">
       <nav className="container mx-auto flex justify-between items-center p-4">
@@ -42,24 +43,20 @@ const Navbar = () => {
           </Link>
 
           {/* Basket Icon */}
-          <Link href="/basket" className="relative flex items-center text-gray-600 hover:text-blue-600">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 3h18l-2 13H5L3 3zm0 0l3 16a2 2 0 002 2h10a2 2 0 002-2l3-16M7 10h.01M17 10h.01"
-              />
-            </svg>
+          <Link href="/basket" className="relative flex items-center">
+            <Image
+              src="/assets/scart.svg" // Basket image from your assets
+              alt="Basket Icon"
+              width={30}
+              height={30}
+              className={`transition ${
+                totalItems > 0 ? "text-orange-500" : "text-gray-600"
+              }`}
+              style={{ filter: totalItems > 0 ? "brightness(1.3)" : "none" }}
+            />
             {/* Badge for total items */}
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full px-2 py-1">
                 {totalItems}
               </span>
             )}

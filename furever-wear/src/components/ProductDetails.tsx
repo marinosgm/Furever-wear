@@ -26,7 +26,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
 <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-5xl mx-auto flex items-center justify-center h-auto">
   <div className="flex flex-col lg:flex-row gap-6 w-full max-h-[1000px]">
     {/* Product Image */}
-    <div className="relative w-full sm:w-2/3 lg:w-1/3 max-w-[250px] aspect-[3/3] mx-auto">
+    <div className="relative w-full sm:w-2/3 lg:w-1/3 max-w-[250px] aspect-[2/3] mx-auto">
   <Image
     src={selectedColor.image || "/assets/default-product.jpg"}
     alt={`Image of ${product.name} in ${selectedColor.name}`}

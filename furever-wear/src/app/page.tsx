@@ -1,3 +1,4 @@
+import { AnimatedTestimonialsDemo } from "@/components/AnimatedTestimonials";
 import Hero from "@/components/Hero";
 import ProductList from "@/components/ProductList";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <div className="bg-white">
       <Hero />
       <ProductList />
+      <AnimatedTestimonialsDemo />
     </div>
   );
 }

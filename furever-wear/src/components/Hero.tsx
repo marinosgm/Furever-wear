@@ -1,8 +1,8 @@
 const Hero = () => {
   return (
     <div
-      className="relative bg-cover bg-center py-24 text-center font-titillium"
-      style={{ backgroundImage: "url('/assets/bg.jpg')" }}
+      className="relative bg-cover bg-center py-[200px] text-center font-titillium"
+      style={{ backgroundImage: "url('/assets/bgxmas.png')" }}
     >
       {/* Overlay for better text visibility */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
