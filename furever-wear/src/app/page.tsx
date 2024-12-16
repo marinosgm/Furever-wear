@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
-import FeaturedProducts from "@/components/FeaturedProducts";
+import ProductList from "@/components/ProductList";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white">
       <Hero />
-      <FeaturedProducts />
+      <ProductList />
     </div>
   );
 }

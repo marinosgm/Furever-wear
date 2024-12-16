@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import { BasketProvider } from "@/context/BasketContext"; // Import the BasketProvider
 
 export default function RootLayout({
   children,
@@ -9,8 +10,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
+        {/* Wrap the app with BasketProvider */}
+        <BasketProvider>
+          <Navbar />
+          <main>{children}</main>
+        </BasketProvider>
       </body>
     </html>
   );
