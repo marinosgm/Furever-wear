@@ -34,7 +34,7 @@ const Footer = () => {
         {/* Contact & Info */}
         <div>
           <p>
-            <strong>We're in touch</strong>
+            <strong>We are in touch</strong>
           </p>
           <p>Email: <a href="mailto:info@fureverwears.com" className="underline">info@fureverwears.com</a></p>
           <p>Phone: <a href="tel:+35797423424" className="underline">+357 97 423 424</a></p>
