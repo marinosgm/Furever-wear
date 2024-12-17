@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { BasketProvider } from "@/context/BasketContext"; // Import the BasketProvider
+import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
         </BasketProvider>
+        <Footer />
       </body>
     </html>
   );
